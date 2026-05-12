@@ -1,4 +1,8 @@
 from dataclasses import dataclass
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 @dataclass
 class Config:
@@ -6,6 +10,6 @@ class Config:
     ADMIN_ID: int
 
 config = Config(
-    BOT_TOKEN="8789440252:AAE8rDGoechq-drdSi-RAiaMYcpHx1MJsfQ",
-    ADMIN_ID= 5007698880
+    BOT_TOKEN=os.getenv("8789440252:AAE8rDGoechq-drdSi-RAiaMYcpHx1MJsfQ"),
+    ADMIN_ID=int(os.getenv("5007698880")) 
 )
