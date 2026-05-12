@@ -1,0 +1,11 @@
+from dataclasses import dataclass
+
+@dataclass
+class Config:
+    BOT_TOKEN: str
+    ADMIN_ID: int
+
+config = Config(
+    BOT_TOKEN="8789440252:AAE8rDGoechq-drdSi-RAiaMYcpHx1MJsfQ",
+    ADMIN_ID= 5007698880
+)
