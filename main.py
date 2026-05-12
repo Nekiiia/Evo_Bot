@@ -27,6 +27,9 @@ async def start_web():
     await runner.setup()
 
     port = int(os.environ.get("PORT", 10000))
+
+    print(f"🌐 Web server running on port {port}")
+
     site = web.TCPSite(runner, "0.0.0.0", port)
     await site.start()
 
