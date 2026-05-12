@@ -47,13 +47,19 @@ async def main():
     dp.include_router(user_router)
     dp.include_router(order_router)
 
-    # запускаем web сервер
-    asyncio.create_task(start_web())
-    
+    # запускаем aiohttp сервер
+    runner = web.AppRunner(web.Application())
+    app = web.Application()
+    app.router.add_get("/", lambda r: web.Response(text="Bot is running"))
 
-    # даём web серверу стартануть
-    await asyncio.sleep(1)
+    runner = web.AppRunner(app)
+    await runner.setup()
 
-    # polling (основной процесс)
+    port = int(os.environ.get("PORT", 10000))
+    site = web.TCPSite(runner, "0.0.0.0", port)
+    await site.start()
+
+    print(f"🌐 Web server running on port {port}")
+
+    # запускаем polling (БЛОКИРУЕТ поток — это нормально)
     await dp.start_polling(bot)
-
