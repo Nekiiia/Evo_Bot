@@ -22,6 +22,7 @@ async def health_check(request):
 async def start_web():
     app = web.Application()
     app.router.add_get("/", health_check)
+    print(f"🌐 Web server running on port {port}")
 
     runner = web.AppRunner(app)
     await runner.setup()
@@ -46,6 +47,7 @@ async def main():
 
     # запускаем web сервер
     asyncio.create_task(start_web())
+    
 
     # даём web серверу стартануть
     await asyncio.sleep(1)
@@ -53,5 +55,3 @@ async def main():
     # polling (основной процесс)
     await dp.start_polling(bot)
 
-print(f"🌐 Web server running on port {port}")
-print("🤖 Bot polling started")
