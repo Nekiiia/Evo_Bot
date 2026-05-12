@@ -10,6 +10,6 @@ class Config:
     ADMIN_ID: int
 
 config = Config(
-    BOT_TOKEN=os.getenv("8789440252:AAE8rDGoechq-drdSi-RAiaMYcpHx1MJsfQ"),
-    ADMIN_ID=int(os.getenv("5007698880")) 
+    BOT_TOKEN=os.getenv("BOT_TOKEN"),
+    ADMIN_ID=int(os.getenv("ADMIN_ID")) 
 )
