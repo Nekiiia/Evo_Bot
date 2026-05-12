@@ -22,7 +22,6 @@ async def health_check(request):
 async def start_web():
     app = web.Application()
     app.router.add_get("/", health_check)
-    print(f"🌐 Web server running on port {port}")
 
     runner = web.AppRunner(app)
     await runner.setup()
